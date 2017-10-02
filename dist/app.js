@@ -7,9 +7,9 @@ ___scope___.file("index.jsx", function(exports, require, module, __filename, __d
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const ReactDOM = require("react-dom");
-const App_jsx_1 = require("./App.jsx");
+const App_1 = require("./App");
 require("./index.css");
-ReactDOM.render(React.createElement(App_jsx_1.default, null), document.getElementById('root'));
+ReactDOM.render(React.createElement(App_1.default, null), document.getElementById('root'));
 //# sourceMappingURL=index.js.map
 });
 ___scope___.file("App.jsx", function(exports, require, module, __filename, __dirname){
@@ -558,7 +558,7 @@ if (FuseBox.isServer) {
 });
 return ___scope___.entry = "index.js";
 });
-FuseBox.import("fusebox-hot-reload").connect(4444, "")
+FuseBox.import("fusebox-hot-reload").connect(3000, "")
 FuseBox.target = "browser"
 
 FuseBox.import("default/index.jsx");
