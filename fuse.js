@@ -3,7 +3,10 @@ const {
   EnvPlugin,
   SVGPlugin,
   CSSPlugin,
-  BabelPlugin,
+  SassPlugin,
+  CSSModules,
+  // PostCSSPlugin,
+  // BabelPlugin,
   QuantumPlugin,
   WebIndexPlugin,
   Sparky
@@ -18,12 +21,20 @@ Sparky.task('config', () => {
     hash: isProduction,
     target: 'browser',
     output: 'dist/$name.js',
+    log: true,
     useTypescriptCompiler: true,
     experimentalFeatures: true,
     plugins: [
       EnvPlugin({ NODE_ENV: isProduction ? 'production' : 'development' }),
       SVGPlugin(),
-      CSSPlugin(),
+      // PostCSSPlugin(),
+      [ /\.s?css$/,
+        SassPlugin({importer : true}),
+        CSSModules(),
+        CSSPlugin({
+          // group: "bundle.css",
+          // outFile: `dist/bundle.css`
+        })],
       WebIndexPlugin({
         template: 'src/index.html'
       }),
