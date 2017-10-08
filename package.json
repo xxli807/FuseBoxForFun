@@ -7,20 +7,32 @@
     "start": "node fuse",
     "dist": "node fuse dist"
   },
-  "author": "",
+  "author": "xinxin.li",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "reflect-metadata": "^0.1.8",
-    "node-sass": "^4.5.3"
+    "axios": "^0.16.2",
+    "node-sass": "^4.5.3",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-redux": "^5.0.6",
+    "history": "^4.7.2",
+    "react-router-redux": "^4.0.8",
+    "react-router": "^3.0.2",
+    "redux": "^3.7.2",
+    "reflect-metadata": "^0.1.8"
   },
   "devDependencies": {
+    "@types/react": "^15.5.21",
+    "@types/react-dom": "^15.5.0",
+    "@types/react-redux": "^4.4.38",
+    "@types/react-router": "^3.0.2",
+    "@types/react-router-redux": "^4.0.8",
     "fuse-box": "^2.2.3",
     "node-sass": "^4.5.3",
     "postcss-modules": "^0.8.0",
     "tslib": "^1.7.1",
     "typescript": "^2.1.4",
+    "redux-typed": "^2.0.0",
     "uglify-js": "^3.0.15"
   }
 }

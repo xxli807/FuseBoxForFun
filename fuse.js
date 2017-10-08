@@ -46,7 +46,7 @@ Sparky.task('config', () => {
     ]
   });
   // vendor
-  vendor = fuse.bundle('vendor').instructions('~ index.tsx');
+  vendor = fuse.bundle('vendor').instructions('~ vendor.ts');
 
   // bundle app
   app = fuse.bundle('app').instructions('> [index.tsx]');
@@ -54,7 +54,8 @@ Sparky.task('config', () => {
 
 Sparky.task('default', ['clean', 'config'], () => {
   fuse.dev({
-    port:3000
+    port:3000,
+    open: true
   });
   // add dev instructions
   app.watch().hmr();
