@@ -1,0 +1,1 @@
+const AJAX_TEST = "AJAX_TEST";
