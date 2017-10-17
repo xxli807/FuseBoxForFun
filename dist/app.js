@@ -42,8 +42,30 @@ ___scope___.file("settings/store.jsx", function(exports, require, module, __file
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reducers = {};
+const homeReducer_1 = require("../reducers/homeReducer");
+exports.reducers = {
+    ajaxTest: homeReducer_1.ajaxTestReducer
+};
 //# sourceMappingURL=store.js.map
+});
+___scope___.file("reducers/homeReducer.js", function(exports, require, module, __filename, __dirname){
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const redux_actions_1 = require("redux-actions");
+const actions = require("../actions/actions");
+const defaultState = {};
+exports.ajaxTestReducer = redux_actions_1.handleAction(actions.AJAX_TEST, (state, action) => { console.log('reducer trigger'); }, defaultState);
+//# sourceMappingURL=homeReducer.js.map
+});
+___scope___.file("actions/actions.js", function(exports, require, module, __filename, __dirname){
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const redux_actions_1 = require("redux-actions");
+exports.AJAX_TEST = "AJAX_TEST";
+exports.AJAX_TEST_ACTION = redux_actions_1.createAction(exports.AJAX_TEST, null);
+//# sourceMappingURL=actions.js.map
 });
 ___scope___.file("share/Layout.jsx", function(exports, require, module, __filename, __dirname){
 
@@ -51,16 +73,27 @@ ___scope___.file("share/Layout.jsx", function(exports, require, module, __filena
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = require("react");
 const NavMenu_1 = require("./NavMenu");
+const actions_1 = require("../actions/actions");
+const react_redux_1 = require("react-redux");
+const redux_1 = require("redux");
 class Layout extends React.Component {
+    AJAXTest() {
+        actions_1.AJAX_TEST_ACTION();
+    }
     render() {
         return React.createElement("div", { className: 'container-fluid' },
             React.createElement("div", { className: 'row' },
                 React.createElement("div", { className: 'col-sm-3' },
                     React.createElement(NavMenu_1.default, null)),
-                React.createElement("div", { className: 'col-sm-9' })));
+                React.createElement("div", { className: 'col-sm-9' },
+                    React.createElement("div", null,
+                        React.createElement("a", { onClick: () => this.AJAXTest() }, "  ajax asiox test")))));
     }
 }
-exports.default = Layout;
+const mapDispatchToProps = (dispatch) => {
+    return redux_1.bindActionCreators({ AJAX_TEST_ACTION: actions_1.AJAX_TEST_ACTION }, dispatch);
+};
+exports.default = react_redux_1.connect(null, mapDispatchToProps)(Layout);
 //# sourceMappingURL=Layout.js.map
 });
 ___scope___.file("share/NavMenu.jsx", function(exports, require, module, __filename, __dirname){
@@ -624,6 +657,7 @@ return ___scope___.entry = "index.js";
 });
 FuseBox.import("fusebox-hot-reload").connect(3000, "", false)
 FuseBox.target = "browser"
+FuseBox.expose([{"alias":"_","pkg":"lodash"}]);
 
 FuseBox.import("default/index.jsx");
 FuseBox.main("default/index.jsx");

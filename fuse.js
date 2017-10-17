@@ -43,7 +43,11 @@ Sparky.task('config', () => {
           treeshake: true,
           uglify: true
         })
-    ]
+    ],
+    globals: { lodash: "_" },
+    alias: {
+      // 'lodash': 'lodash/lib'
+}
   });
   // vendor
   vendor = fuse.bundle('vendor').instructions('~ vendor.ts');
