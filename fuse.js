@@ -59,7 +59,16 @@ Sparky.task('config', () => {
 Sparky.task('default', ['clean', 'config'], () => {
   fuse.dev({
     port:3000,
-    open: true
+    open: true,
+    proxy: {
+      '/api':{
+          target: 'http://localhost:5000', 
+          changeOrigin: true,
+          pathRewrite: {
+              '^/api': '/', 
+          },
+      }
+}
   });
   // add dev instructions
   app.watch().hmr();
